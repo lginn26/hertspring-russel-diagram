@@ -4,15 +4,22 @@ from star import Star
 # Initialize game engine
 pygame.init()
 
+# Images
+base_image = pygame.image.load("assets/base_diagram.jpg")
+
 # Stages
 START = 0
 PLAYING = 1
 END = 2
 PAUSE = 3
 
+# Program Variables
+done = False
+stage = START
+
 # Window
-WIDTH = 1920
-HEIGHT = 1080
+WIDTH = 960
+HEIGHT = 980
 SIZE = (WIDTH, HEIGHT)
 TITLE = "Hertspring Russel Diagram"
 screen = pygame.display.set_mode(SIZE)
@@ -56,6 +63,7 @@ while not done:
     # Game Logic (Preforms ingame actions and controls the program.)
 
     # Drawing Logic (Draws the graphics and sprites on screen)
+    screen.blit(base_image, [0,0])
 
     # Update screen (Draw the picture in the window.)
     pygame.display.flip()

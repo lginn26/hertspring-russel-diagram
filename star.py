@@ -1,3 +1,5 @@
+import pygame
+
 class Star(pygame.sprite.Sprite):
 
     def __init__(self, name, classification, color_index, absolute_magnatiude,
