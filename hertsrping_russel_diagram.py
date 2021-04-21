@@ -20,6 +20,11 @@ stage = START
 # Window
 WIDTH = 960
 HEIGHT = 980
+
+# Diagram Dimensions 
+# X-axis 127-940
+# Y-axis 18-830
+
 SIZE = (WIDTH, HEIGHT)
 TITLE = "Hertspring Russel Diagram"
 screen = pygame.display.set_mode(SIZE)
@@ -40,16 +45,13 @@ SKYBLUE = (0, 238, 255)
 
 # Star List
 star_list = [
-   
+   Star("Betelgeuse", "M2", 2.06, -5.85, 150000, 3500, 20, 700, 700)
 ]
 
 def setup():
+    global visible_stars
     # Sets initial state of the program
     stage == START
-
-    # Initilizes an empty list of stars
-    # This will get filled as the program runs
-    visible_stars = pygame.sprite.Group()
 
 # Program loop
 setup()
@@ -61,9 +63,13 @@ while not done:
             done = True
 
     # Game Logic (Preforms ingame actions and controls the program.)
-
+     
     # Drawing Logic (Draws the graphics and sprites on screen)
     screen.blit(base_image, [0,0])
+
+    for star in star_list:
+        star.display(screen, WHITE)
+        print(star.posx, star.posy)
 
     # Update screen (Draw the picture in the window.)
     pygame.display.flip()
