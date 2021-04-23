@@ -45,7 +45,9 @@ SKYBLUE = (0, 238, 255)
 
 # Star List
 star_list = [
-   Star("Betelgeuse", "M2", 2.06, -5.85, 150000, 3500, 20, 700, 700)
+   Star("Betelgeuse", "M2", 2.06, -5.85, 150000, 3500, 20),
+   Star("Antares", "M1", 1.83, -5.28, 1.6, 18500, 7.2),
+   Star("Proxima Centauri", "M5.5", 1.82, 11.05, .0017, 3042, .123)
 ]
 
 def setup():
@@ -67,8 +69,10 @@ while not done:
     # Drawing Logic (Draws the graphics and sprites on screen)
     screen.blit(base_image, [0,0])
 
+    # Displays each instance of Star in star_list
     for star in star_list:
         star.display(screen, WHITE)
+
         print(star.posx, star.posy)
 
     # Update screen (Draw the picture in the window.)

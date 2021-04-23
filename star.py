@@ -1,11 +1,12 @@
 import pygame
+import math
 
 # Variables
 
 origin_x = 127
-origin_y = 830
-posX_sf = 813/960
-posY_sf = 830/980
+origin_y = 479
+posX_sf = 813/35000
+#posY_sf = 
 
 class Star(pygame.sprite.Sprite):
 
@@ -15,7 +16,7 @@ class Star(pygame.sprite.Sprite):
     luminonsity values
     """
     def __init__(self, name, classification, color_index, absolute_magnatiude,
-    luminosity, surface_tempature, mass, posx, posy):
+    luminosity, surface_tempature, mass):
         super().__init__()
         
         # Star Data
@@ -28,8 +29,8 @@ class Star(pygame.sprite.Sprite):
         self.mass = mass
 
         # Object Data
-        self.posx = origin_x + (posx * posX_sf)
-        self.posy = origin_y - (posy * posY_sf)
+        self.posx = origin_x + ( 813 - (surface_tempature * posX_sf))
+        self.posy = origin_y - (math.log(luminosity, 10) * 70)
         
     def display(self, surface, color):
         pygame.draw.circle(surface, color, (self.posx, self.posy), 10)
