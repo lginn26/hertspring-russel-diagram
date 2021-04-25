@@ -1,12 +1,30 @@
 import pygame
 import math
 
+# Diagram Dimensions
+# X-Axis Length: 1192
+# Y-Axis Length: 860
+
+# X-Step: 100
+# Y-Step: 75
+
+# X-Origin: 1280
+# Y-Origin: 530 
+
 # Variables
 
-origin_x = 127
-origin_y = 479
-posX_sf = 813/35000
-#posY_sf = 
+origin_x = 1280
+origin_y = 530
+
+x_step = 100
+y_step = 75
+
+temp_step = 3000
+lum_step = 0
+
+temp_size_sf = 20/1192
+lum_size_sf = 20/860
+
 
 class Star(pygame.sprite.Sprite):
 
@@ -29,8 +47,9 @@ class Star(pygame.sprite.Sprite):
         self.mass = mass
 
         # Object Data
-        self.posx = origin_x + ( 813 - (surface_tempature * posX_sf))
-        self.posy = origin_y - (math.log(luminosity, 10) * 70)
-        
+        self.posx = origin_x - (x_step * (surface_tempature / temp_step))
+        self.posy = origin_y - (math.log10(luminosity) * y_step)
+
     def display(self, surface, color):
-        pygame.draw.circle(surface, color, (self.posx, self.posy), 10)
+        radius = (temp_size_sf * self.posx) + ((lum_size_sf * (1192 - self.posy)))
+        pygame.draw.circle(surface, color, (self.posx, self.posy), radius)

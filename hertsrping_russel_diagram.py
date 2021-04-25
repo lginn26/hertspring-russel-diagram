@@ -18,12 +18,8 @@ done = False
 stage = START
 
 # Window
-WIDTH = 960
-HEIGHT = 980
-
-# Diagram Dimensions 
-# X-axis 127-940
-# Y-axis 18-830
+WIDTH = 1300
+HEIGHT = 1000
 
 SIZE = (WIDTH, HEIGHT)
 TITLE = "Hertspring Russel Diagram"
@@ -47,7 +43,9 @@ SKYBLUE = (0, 238, 255)
 star_list = [
    Star("Betelgeuse", "M2", 2.06, -5.85, 150000, 3500, 20),
    Star("Antares", "M1", 1.83, -5.28, 1.6, 18500, 7.2),
-   Star("Proxima Centauri", "M5.5", 1.82, 11.05, .0017, 3042, .123)
+   Star("Proxima Centauri", "M5.5", 1.82, 11.05, .0017, 3042, .123),
+   Star("Van Maanen's Star", "DZ8", .546, 12.374, .00016,6220, 0.633)
+
 ]
 
 def setup():
@@ -72,8 +70,8 @@ while not done:
     # Displays each instance of Star in star_list
     for star in star_list:
         star.display(screen, WHITE)
-
-        print(star.posx, star.posy)
+    
+    print(pygame.mouse.get_pos())
 
     # Update screen (Draw the picture in the window.)
     pygame.display.flip()
