@@ -1,3 +1,5 @@
+import sys
+import os
 import math
 import pygame
 from star import Star
@@ -48,6 +50,15 @@ def display_message(message):
     star_txt = font1.render(message, 1, RED)
     w = star_txt.get_width()
     screen.blit(star_txt, [0, 950])
+
+def resource_path(relative_path):
+    try:
+    # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 # Star List
 star_list = [
